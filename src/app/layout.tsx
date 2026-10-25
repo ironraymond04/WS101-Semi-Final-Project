@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Campus Lost & Found",
+  title: "SPC Lost & Found",
   description: "Report campus lost and found property, verify ownership, and coordinate returns through the campus desk.",
 };
 

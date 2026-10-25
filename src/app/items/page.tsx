@@ -72,20 +72,22 @@ export default async function ItemsPage({ searchParams }: { searchParams: Search
   return (
     <main className="mx-auto max-w-5xl p-6">
       <header className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Campus Lost &amp; Found</h1>
+        <h1 className="text-2xl font-bold">SPC Lost &amp; Found</h1>
         <nav className="flex gap-3 text-sm">
           <Link href="/items/new" className="rounded bg-blue-600 px-3 py-1.5 text-white">Report item</Link>
           <Link href="/admin" className="px-3 py-1.5">Admin</Link>
-          <form action={signOut}><button className="px-3 py-1.5">Log out</button></form>
+          <form action={signOut}><button className="px-3 py-1.5 cursor-pointer">Log out</button></form>
         </nav>
       </header>
 
       <form className="mb-6 flex gap-2">
         <input name="q" defaultValue={queryText} placeholder="Search item names…" maxLength={100} className="flex-1 rounded border p-2" />
-        <select name="type" defaultValue={type === "lost" || type === "found" ? type : ""} className="rounded border p-2">
-          <option value="">All reports</option><option value="lost">Lost</option><option value="found">Found</option>
-        </select>
-        <button className="rounded border px-4">Search</button>
+        <select name="type" defaultValue={type === "lost" || type === "found" ? type : ""} className="rounded border p-2 cursor-pointer">
+        <option value="" className="bg-white text-black">All reports</option>
+        <option value="lost" className="bg-white text-black">Lost</option>
+        <option value="found" className="bg-white text-black">Found</option>
+      </select>
+        <button className="rounded border px-4 cursor-pointer">Search</button>
       </form>
 
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
