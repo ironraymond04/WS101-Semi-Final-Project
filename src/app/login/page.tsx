@@ -15,8 +15,8 @@ export default function LoginPage() {
         {mode === "signup" && (
           <input name="full_name" placeholder="Full name" required className="w-full rounded border p-2" />
         )}
-        <input name="email" type="email" placeholder="Email" required className="w-full rounded border p-2" />
-        <input name="password" type="password" placeholder="Password (8+ chars)" required className="w-full rounded border p-2" />
+        <input name="email" type="email" placeholder="Email" required className="w-full rounded border p-2" suppressHydrationWarning/>
+        <input name="password" type="password" placeholder="Password (8+ chars)" required className="w-full rounded border p-2" suppressHydrationWarning/>
         {state?.error && <p className="text-sm text-red-600">{state.error}</p>}
         {state?.message && <p className="text-sm text-green-600">{state.message}</p>}
         <button disabled={pending} className="w-full rounded bg-blue-600 p-2 text-white disabled:opacity-50">
