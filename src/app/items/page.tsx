@@ -30,6 +30,20 @@ export default async function ItemsPage({ searchParams }: { searchParams: Search
   const activeType: "lost" | "found" | "" = type === "lost" || type === "found" ? type : "";
   const supabase = await createClient();
 
+  const {
+  data: { user },
+} = await supabase.auth.getUser();
+
+const { data: profile } = user
+  ? await supabase
+      .from("profiles")
+      .select("full_name")
+      .eq("id", user.id)
+      .single()
+  : { data: null };
+
+const fullName = profile?.full_name?.trim();
+
   let lostQuery = supabase
     .from("lost_reports")
     .select("id,title,description,category_id,last_seen_on,last_seen_location,image_path,status,created_at")
@@ -112,6 +126,9 @@ export default async function ItemsPage({ searchParams }: { searchParams: Search
         <header className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <h1 className="text-3xl font-bold tracking-tight text-white">SPC Lost &amp; Found</h1>
+            <p className="mt-1 text-sm text-neutral-400">
+                Hello, <span className="font-medium text-neutral-200">{fullName || "there"}!</span>
+            </p>
             <p className="mt-1 text-sm text-neutral-400">Search reports from around campus, or post your own.</p>
           </div>
           <nav className="flex items-center gap-2">
