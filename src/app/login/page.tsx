@@ -37,6 +37,7 @@ export default function LoginPage() {
                 key={m}
                 type="button"
                 onClick={() => setMode(m)}
+                suppressHydrationWarning
                 className={`cursor-pointer rounded-md px-3 py-1.5 text-sm font-medium transition ${
                   mode === m ? "bg-neutral-800 text-white shadow-sm" : "text-neutral-400 hover:text-neutral-200"
                 }`}
@@ -94,6 +95,7 @@ export default function LoginPage() {
                   type="button"
                   onClick={() => setShowPassword((v) => !v)}
                   aria-label={showPassword ? "Hide password" : "Show password"}
+                  suppressHydrationWarning
                   className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer rounded px-2 py-1 text-xs font-medium text-neutral-400 transition hover:text-neutral-100 bg-black text-white"
                 >
                   {showPassword ? "Hide" : "Show"}
@@ -114,6 +116,7 @@ export default function LoginPage() {
 
             <button
               disabled={pending}
+              suppressHydrationWarning
               className="w-full cursor-pointer rounded-lg bg-blue-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-neutral-950 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {pending ? "Please wait…" : isLogin ? "Log in" : "Create account"}
@@ -127,6 +130,7 @@ export default function LoginPage() {
           <button
             type="button"
             onClick={() => setMode(isLogin ? "signup" : "login")}
+            suppressHydrationWarning
             className="cursor-pointer font-medium text-blue-400 transition hover:text-blue-300 hover:underline"
           >
             {isLogin ? "Sign up" : "Log in"}
