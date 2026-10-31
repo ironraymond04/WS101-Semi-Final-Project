@@ -118,7 +118,7 @@ export default async function ItemsPage({ searchParams }: { searchParams: Search
             <Link href="/items/new" className={btnPrimary}>+ Report item</Link>
             <Link href="/admin" className={btnGhost}>Admin</Link>
             <form action={signOut}>
-              <button className={btnGhost}>Log out</button>
+              <button className={btnGhost} suppressHydrationWarning>Log out</button>
             </form>
           </nav>
         </header>
@@ -144,10 +144,11 @@ export default async function ItemsPage({ searchParams }: { searchParams: Search
                 defaultValue={queryText}
                 placeholder="Search item names…"
                 maxLength={100}
+                suppressHydrationWarning
                 className="w-full rounded-lg border border-neutral-700 bg-neutral-950 py-2.5 pl-9 pr-3 text-sm text-neutral-100 placeholder:text-neutral-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
               />
             </div>
-            <button className={btnPrimary}>Search</button>
+            <button className={btnPrimary} suppressHydrationWarning>Search</button>
             {queryText && (
               <Link href={tabHref(activeType).replace(/[?&]q=[^&]*&?/, "?").replace(/\?$/, "") || "/items"} className={btnGhost}>
                 Clear
